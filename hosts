@@ -1,0 +1,5 @@
+[ya_server]
+84.201.140.235
+[ya_server:vars]
+ansible_ssh_common_args='-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
+ansible_ssh_private_key_file=/Users/podkovka/Library/Mobile\ Documents/com\~apple\~CloudDocs/SSH/AWS_key.pem

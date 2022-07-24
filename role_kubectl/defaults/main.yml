@@ -1,0 +1,38 @@
+---
+# "kubectl" version to install
+kubectl_version: "1.23.9"
+
+# The default "archive" will download "kubectl" as a ".tar.gz" file. This is
+# about 2.5x smaller then "binary" but the tarball needs to be unarchived
+# by the role first after downloading.
+# If you specify "binary" the "kubectl" binary file will be downloaded. In
+# contrast to the tarball the binary file is about 2.5x bigger but doesn't
+# need to be unarchived by this role.
+# If download file size is important for you (e.g. slow download or download
+# over mobile link) stay with "archive". Otherwise "binary" might be an option.
+kubectl_download_filetype: "archive"
+# SHA512 checksum of the .tar.gz file (see https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.23.md#client-binaries)
+kubectl_checksum_archive: "sha512:3128800d337cc9be19494bcc724b9ea112444be6194136ef0e49b969394522533262a3f92554cf3543ae9b1e0bf063de7694f73ba230154bf2e59b74599f40ee"
+# SHA512 checksum of the binary (see https://storage.googleapis.com/kubernetes-release/release/v1.23.9/bin/linux/amd64/kubectl.sha512)
+kubectl_checksum_binary: "sha512:e26844cd3c0a6ad054702d15bd40d85fc154f9a48f5b3ef458a62113fe881b6c740f45fb4df41b828b157f1f474e25504da6f43b5f25c591bc1db458617ffe30"
+
+# Where to install "kubectl" binary
+kubectl_bin_directory: "/usr/local/bin"
+
+# Directory to store the kubectl archive
+kubectl_tmp_directory: "{{ lookup('env', 'TMPDIR') | default('/tmp',true) }}"
+
+# Owner of "kubectl" binary
+kubectl_owner: "root"
+
+# Group of "kubectl" binary
+kubectl_group: "root"
+
+# Specifies the permissions of the "kubectl" binary
+kubectl_binary_mode: "0755"
+
+# Operating system on which "kubectl" should run on
+kubectl_os: "linux"  # use "darwin" for MacOS X, "windows" for Windows
+
+# Processor architecture "kubectl" should run on
+kubectl_arch: "amd64"  # other possible values: "386","arm64","arm","ppc64le","s390x"
